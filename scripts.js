@@ -1,9 +1,11 @@
 const { createFFmpeg, fetchFile } = FFmpeg;
-const ffmpeg = createFFmpeg({ 
-  log: true, 
+const ffmpeg = createFFmpeg({
+  log: true,
+  coreURL: './assets/ffmpeg/ffmpeg-core.js',
+  wasmURL: './assets/ffmpeg/ffmpeg-core.wasm',
   progress: ({ ratio }) => {
     const percent = (ratio * 100).toFixed(2);
-    status.textContent = `Status: Compressing video... ${percent}%`;
+    document.getElementById('status').textContent = `Status: Compressing video... ${percent}%`;
   }
 });
 
